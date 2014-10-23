@@ -1,7 +1,13 @@
 <div class="medium-12 columns">
-  <h4 ng-model="file">{{file.name}}</h4>
+  <p>{{file.name}}  {{fileDisplaySize}}</p>
   <ul class="small-block-grid-1">
-    <li><img src="http://placehold.it/950x300/" alt="sorry" /></li>
+    <li>
+    <div class="row">
+      <pre>
+      <div id="file-output" class="medium-12 columns panel">File preview</div>
+      </pre>
+    </div>
+    </li>
   </ul>
   <form>
     <label class="button" id="leadscore-file-input-label" for="leadscore-file-input">
