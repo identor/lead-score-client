@@ -1,14 +1,15 @@
 <div class="medium-12 columns">
-  <p>{{file.name}}  {{fileDisplaySize}}</p>
-  <ul class="small-block-grid-1">
-    <li>
+  <p ng-show="file">{{file.name}} {{fileDisplaySize}}</p>
+  <p ng-hide="file">No file is selected...</p>
     <div class="row">
-      <pre>
-      <div id="file-output" class="medium-12 columns panel">File preview</div>
-      </pre>
+      <div id="file-output">
+        <div id="file-output-content" class="medium-12 columns">
+          <div ng-show="file" id="loading">
+            Loading...
+          </div>
+        </div>
+      </div>
     </div>
-    </li>
-  </ul>
   <form>
     <label class="button" id="leadscore-file-input-label" for="leadscore-file-input">
       Select file...

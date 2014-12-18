@@ -2,10 +2,22 @@
   background-color: #939393;
   height: 5rem;
   width: 39rem;
-  margin: .9em 2em .9em 2em;
+  margin: .9rem 2rem .9rem 2rem;
 }
 
 #leadscore-file-input {
   display: none;
   visibility: hidden;
+}
+
+#file-output-content {
+  overflow: auto;
+  white-space: pre;
+  height: 25rem;
+  border: .1rem dashed;
+  font-family: "Lucida Console", Monaco, monospace;
+  margin-bottom: 1rem;
+}
+
+#loading {
 }

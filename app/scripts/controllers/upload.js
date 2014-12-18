@@ -9,6 +9,10 @@
  */
 angular.module('leadScoreClientApp')
   .controller('UploadCtrl', function ($scope) {
+    // TODO: all of these
+    // get extension - if the file is not a csv do not process
+    // read line by line - ?
+    // create a new text stream from these and send this through `binaryjs`
     function showFileInDom(file) {
       /**
        * Check for the various File API support.
@@ -45,8 +49,9 @@ angular.module('leadScoreClientApp')
        * Display content using a basic HTML replacement
        */
       function displayContents(txt) {
-          var el = document.getElementById('file-output');
-          el.innerHTML = txt; //display output in DOM
+        var csv = new CSV(txt, {header : true}).parse();
+        var el = document.getElementById('file-output-content');
+        el.innerHTML = txt;
       }
 
       return readText(file);
@@ -60,7 +65,10 @@ angular.module('leadScoreClientApp')
       $scope.file = $leadScoreFileInput.get(0).files[0];
       $scope.fileDisplaySize = ' (' + Math.round($scope.file.size / 1024) + ' KB) ';
       showFileInDom($scope.file);
-      console.log('file selected');
+      var client = new BinaryClient('ws://192.168.1.73:9000');
+      client.on('open', function() {
+        client.send($scope.file, {name: $scope.file.name, size: $scope.file.size});
+      });
     };
 
     $leadScoreFileInput.on('change', function() {
