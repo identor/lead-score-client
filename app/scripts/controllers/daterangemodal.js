@@ -8,7 +8,7 @@
  * Controller of the leadScoreClientApp
  */
 angular.module('leadScoreClientApp')
-  .controller('DaterangemodalCtrl', function ($scope, $modalInstance) {
+  .controller('DateRangeModalCtrl', function ($scope, $modalInstance) {
     $scope.ok = function() {
       $modalInstance.close();
     };

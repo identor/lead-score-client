@@ -17,11 +17,11 @@ angular.module('leadScoreClientApp')
       .error(function(data, status, headers, config) {
         console.log('Error');
       });
-      $scope.open = function() {
+      $scope.openDateRangeModal = function() {
         var modalInstance = $modal.open({
             templateUrl: 'views/daterangemodal.html',
-            controller: 'DaterangemodalCtrl',
-            resolve: {}
+            controller: 'DateRangeModalCtrl',
+            windowClass: 'medium',
         });
       };
   }]);

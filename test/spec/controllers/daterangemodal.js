@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: DaterangemodalCtrl', function () {
+describe('Controller: DateRangeModalCtrl', function () {
 
   // load the controller's module
   beforeEach(module('leadScoreClientApp'));
@@ -11,7 +11,7 @@ describe('Controller: DaterangemodalCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    DaterangemodalCtrl = $controller('DaterangemodalCtrl', {
+    DateRangeModalCtrl = $controller('DateRangeModalCtrl', {
       $scope: scope
     });
   }));
