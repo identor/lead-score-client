@@ -27,6 +27,10 @@ angular.module('leadScoreClientApp')
         'href': '#/upload',
       },
       {
+        'name': 'Scores',
+        'href': '#/scores',
+      },
+      {
         'name': 'About',
         'href': '#/about',
       },
