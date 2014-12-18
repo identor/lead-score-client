@@ -21,3 +21,14 @@
 
 #loading {
 }
+
+.leadscore-table .leadscore-table-row:nth-of-type(odd) {
+  background-color: gainsboro;
+}
+
+.leadscore-table-header {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-weight: bold;
+  border-bottom: .4rem solid lightslategray;
+}
+

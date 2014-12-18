@@ -1,2 +1,25 @@
-<p>This is the scores view.</p>
-<div ng-repeat="score in scores">{{score.scorer}}, {{score.total_processing_time}}</div>
+<div class="reveal-modal" data-reveal>
+  This functionality not available...
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><a data-reveal-id="not-available">All</a></dd>
+  <dd><a>This Week</a></dd>
+  <dd><a>This Month</a></dd>
+  <dd><a>Date Range</a></dd>
+</dl>
+<div class="leadscore-table small-12 columns">
+  <div class="row leadscore-table-header text-center">
+    <div class="small-4 medium-3 columns">Scorer</div>
+    <div class="show-for-medium-up medium-3 columns">Industry</div>
+    <div class="small-4 medium-3 columns">Processing Time</div>
+    <div class="small-4 medium-3 columns">Call Count</div>
+  </div>
+  <div class="row leadscore-table-row" ng-repeat="score in scores">
+    <div class="small-4 medium-3 columns"><a>{{score.scorer}}</a></div>
+    <div class="show-for-medium-up medium-3 columns">{{score.industry}}</div>
+    <div class="small-4 medium-3 columns text-right">{{score.total_processing_time}}</div>
+    <div class="small-4 medium-3 columns text-right">{{score.call_count}}</div>
+  </div>
+</div>

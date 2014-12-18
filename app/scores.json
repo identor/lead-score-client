@@ -3,42 +3,49 @@
     "scorer": "ARPIPutoMF",
     "industry": "Multifamily",
     "total_processing_time": 100500,
-    "total_call_duration": 300000
+    "total_call_duration": 300000,
+    "call_count": 345
   },
   {
     "scorer": "ARPIBoomBomMF",
     "industry": "Multifamily",
     "total_processing_time": 133500,
-    "total_call_duration": 230000
+    "total_call_duration": 230000,
+    "call_count": 34
   },
   {
     "scorer": "ARPIBCicoMF",
     "industry": "Multifamily",
     "total_processing_time": 223500,
-    "total_call_duration": 370000
+    "total_call_duration": 370000,
+    "call_count": 45
   },
   {
     "scorer": "ARPIBBichoMF",
     "industry": "Multifamily",
     "total_processing_time": 233500,
-    "total_call_duration": 430000
+    "total_call_duration": 430000,
+    "call_count": 245
   },
   {
     "scorer": "ARPIVCaga",
     "industry": "Multifamily",
     "total_processing_time": 133599,
-    "total_call_duration": 130000
+    "total_call_duration": 130000,
+    "call_count": 24
   },
   {
     "scorer": "ARPIVBaga",
     "industry": "Multifamily",
     "total_processing_time": 233520,
-    "total_call_duration": 330000
+    "total_call_duration": 330000,
+    "call_count": 65
   },
   {
     "scorer": "ARPIHNaga",
     "industry": "Multifamily",
     "total_processing_time": 533500,
-    "total_call_duration": 630000
+    "total_call_duration": 630000,
+    "call_count": 1233
   }
 ]
