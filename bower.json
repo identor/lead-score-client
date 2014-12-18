@@ -14,7 +14,8 @@
     "angular-route": "~1.2.0",
     "foundation": "zurb/bower-foundation#~5.4.6",
     "comma-separated-values": "~3.6.1",
-    "binaryjs": "~0.2.1"
+    "binaryjs": "~0.2.1",
+    "angular-foundation": "~0.5.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
