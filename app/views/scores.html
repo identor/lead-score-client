@@ -13,7 +13,7 @@
     <div class="small-4 medium-3 columns">Processing Time</div>
     <div class="small-4 medium-3 columns">Call Count</div>
   </div>
-  <div class="row leadscore-table-row" ng-repeat="score in scores">
+  <div class="row leadscore-table-row" ng-repeat="score in filteredScores">
     <div class="small-4 medium-3 columns"><a>{{score.scorer}}</a></div>
     <div class="show-for-medium-up medium-3 columns">{{score.industry}}</div>
     <div class="small-4 medium-3 columns text-right">{{score.total_processing_time}}</div>
