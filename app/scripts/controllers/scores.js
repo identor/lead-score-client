@@ -30,10 +30,21 @@ angular.module('leadScoreClientApp')
     $scope.openDateRangeModal = function() {
       var showDateRange = function(err, dateFrom, dateTo) {
         if (err) {
+          console.error(err);
           return;
         }
+        if (dateFrom == 'Invalid Date' || dateTo == 'Invalid Date') {
+          console.error('Invalid Date: cannot continue!');
+          return;
+        }
+        console.log(dateFrom);
+        console.log(dateTo);
+        var filterDateRange = function(score) {
+          var scoreDate = window.lastDate = new Date(score.date);
+          return dateFrom <= scoreDate && dateTo >= scoreDate;
+        };
+        $scope.filteredScores = $scope.scores.filter(filterDateRange);
         $scope.activeTab = RANGE;
-        console.log(dateFrom+dateTo);
       };
 
       var modalInstance = $modal.open({
@@ -49,14 +60,14 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.showThisDay = function() {
-      var filterToday = function(score) {
+      var today = function(score) {
         var scoreDate = new Date(score.date);
         var now = new Date();
         return scoreDate.getFullYear() == now.getFullYear()
             && scoreDate.getMonth() == now.getMonth()
             && scoreDate.getDate() == now.getDate();
       };
-      $scope.filteredScores = $scope.scores.filter(filterToday);
+      $scope.filteredScores = $scope.scores.filter(today);
       $scope.activeTab = DAY;
     };
 
@@ -75,24 +86,24 @@ angular.module('leadScoreClientApp')
         // Return array of year and week number
         return weekNo;
       };
-      var filterThisWeek = function(score) {
+      var thisWeek = function(score) {
         var scoreDate = new Date(score.date);
         var now = new Date();
         return scoreDate.getFullYear() == now.getFullYear()
             && weekNumber(scoreDate) == weekNumber(now);
       };
-      $scope.filteredScores = $scope.scores.filter(filterThisWeek);
+      $scope.filteredScores = $scope.scores.filter(thisWeek);
       $scope.activeTab = WEEK;
     };
 
     $scope.showThisMonth = function() {
-      var filterThisMonth = function(score) {
+      var thisMonth = function(score) {
         var scoreDate = new Date(score.date);
         var now = new Date();
         return scoreDate.getFullYear() == now.getFullYear()
             && scoreDate.getMonth() == now.getMonth();
       };
-      $scope.filteredScores = $scope.scores.filter(filterThisMonth);
+      $scope.filteredScores = $scope.scores.filter(thisMonth);
       $scope.activeTab = MONTH;
     };
 
