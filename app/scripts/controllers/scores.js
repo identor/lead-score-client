@@ -8,7 +8,8 @@
  * Controller of the leadScoreClientApp
  */
 angular.module('leadScoreClientApp')
-  .controller('ScoresCtrl', ['$scope', '$http', '$modal', function ($scope, $http, $modal) {
+  .controller('ScoresCtrl', ['$scope', '$http', '$modal',
+              function ($scope, $http, $modal) {
     var ALL, DAY, WEEK, MONTH, RANGE;
     $scope.ALL = ALL = 'all';
     $scope.DAY = DAY = 'day';
@@ -72,25 +73,21 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.showThisWeek = function() {
-      var weekNumber = function(date) {
-        // Copy date so don't modify original
-        var d = new Date(+date);
-        d.setHours(0,0,0);
-        // Set to nearest Thursday: current date + 4 - current day number
-        // Make Sunday's day number 7
-        d.setDate(d.getDate() + 4 - (d.getDay()||7));
-        // Get first day of year
-        var yearStart = new Date(d.getFullYear(),0,1);
-        // Calculate full weeks to nearest Thursday
-        var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7)
-        // Return array of year and week number
-        return weekNo;
+      /*
+       * Returns a Date object which is the first day of the week
+       * according to the date specified. `date` should also be
+       * a Date object.
+       */
+      var firstDateOfWeek = function(date) {
+        // Zero the hour, minute, and Milliseconds
+        var d = new Date(date.toDateString());
+        return new Date(+d - d.getDay() * 24 * 60 * 60 * 1000);
       };
       var thisWeek = function(score) {
-        var scoreDate = new Date(score.date);
         var now = new Date();
-        return scoreDate.getFullYear() == now.getFullYear()
-            && weekNumber(scoreDate) == weekNumber(now);
+        var scoreDate = new Date(score.date)
+        window.test = { now: now, date: scoreDate };
+        return firstDateOfWeek(scoreDate) == firstDateOfWeek(now);
       };
       $scope.filteredScores = $scope.scores.filter(thisWeek);
       $scope.activeTab = WEEK;
