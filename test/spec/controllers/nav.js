@@ -15,8 +15,4 @@ describe('Controller: NavCtrl', function () {
       $scope: scope
     });
   }));
-
-  it('should attach 3 nav objects to scope', function () {
-    expect(scope.navs.length).toBe(3);
-  });
 });

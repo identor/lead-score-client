@@ -5,7 +5,7 @@ describe('Controller: DateRangeModalCtrl', function () {
   // load the controller's module
   beforeEach(module('leadScoreClientApp'));
 
-  var DaterangemodalCtrl,
+  var DateRangeModalCtrl,
     scope;
 
   // Initialize the controller and a mock scope
