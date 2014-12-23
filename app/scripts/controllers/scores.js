@@ -86,8 +86,7 @@ angular.module('leadScoreClientApp')
       var thisWeek = function(score) {
         var now = new Date();
         var scoreDate = new Date(score.date)
-        window.test = { now: now, date: scoreDate };
-        return firstDateOfWeek(scoreDate) == firstDateOfWeek(now);
+        return +firstDateOfWeek(scoreDate) == +firstDateOfWeek(now);
       };
       $scope.filteredScores = $scope.scores.filter(thisWeek);
       $scope.activeTab = WEEK;
