@@ -38,8 +38,6 @@ angular.module('leadScoreClientApp')
           console.error('Invalid Date: cannot continue!');
           return;
         }
-        console.log(dateFrom);
-        console.log(dateTo);
         var filterDateRange = function(score) {
           var scoreDate = window.lastDate = new Date(score.date);
           return dateFrom <= scoreDate && dateTo >= scoreDate;
@@ -112,6 +110,5 @@ angular.module('leadScoreClientApp')
       if (tab == $scope.activeTab) {
         return 'active';
       }
-      //console.log(tab);
     };
   }]);
