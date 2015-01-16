@@ -1,10 +1,17 @@
 <dl class="sub-nav">
-  <dt>Filter:</dt>
-  <dd ng-class="isActive(ALL)" ng-click="showAll()"><a>All</a></dd>
-  <dd ng-class="isActive(DAY)" ng-click="showThisDay()"><a>This Day</a></dd>
-  <dd ng-class="isActive(WEEK)" ng-click="showThisWeek()"><a>This Week</a></dd>
-  <dd ng-class="isActive(MONTH)" ng-click="showThisMonth()"><a>This Month</a></dd>
-  <dd ng-class="isActive(RANGE)"><a ng-click="openDateRangeModal()">Date Range</a></dd>
+  <dt>Time:</dt>
+  <dd ng-class="isActiveTime(ALL)" ng-click="showAll()"><a>All</a></dd>
+  <dd ng-class="isActiveTime(DAY)" ng-click="showThisDay()"><a>This Day</a></dd>
+  <dd ng-class="isActiveTime(WEEK)" ng-click="showThisWeek()"><a>This Week</a></dd>
+  <dd ng-class="isActiveTime(MONTH)" ng-click="showThisMonth()"><a>This Month</a></dd>
+  <dd ng-class="isActiveTime(RANGE)"><a ng-click="openDateRangeModal()">Date Range</a></dd>
+</dl>
+<dl class="sub-nav">
+  <dt>Branch:</dt>
+  <dd ng-class="isActiveBranch(ALL)">All</dd>
+  <dd ng-class="isActiveBranch(BAGUIO)"><a>Baguio</a></dd>
+  <dd ng-class="isActiveBranch(BACOLOD)"><a>Bacolod</a></dd>
+  <dd ng-class="isActiveBranch(INDIA)"><a>India</a></dd>
 </dl>
 <div class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">

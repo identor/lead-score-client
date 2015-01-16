@@ -10,13 +10,17 @@
 angular.module('leadScoreClientApp')
   .controller('ScoresCtrl', ['$scope', '$http', '$modal',
               function ($scope, $http, $modal) {
-    var ALL, DAY, WEEK, MONTH, RANGE;
+    var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA;
     $scope.ALL = ALL = 'all';
     $scope.DAY = DAY = 'day';
     $scope.WEEK = WEEK = 'week';
     $scope.MONTH = MONTH = 'month';
     $scope.RANGE = RANGE = 'range';
-    $scope.activeTab = ALL;
+    $scope.BAGUIO = BAGUIO = 'baguio';
+    $scope.BACOLOD = BACOLOD = 'bacolod';
+    $scope.INDIA = INDIA = 'india';
+    $scope.activeTimeTab = ALL;
+    $scope.activeBranchTab = BAGUIO;
     $scope.filteredScores = [];
 
     $http.get('scores.json')
@@ -43,7 +47,7 @@ angular.module('leadScoreClientApp')
           return dateFrom <= scoreDate && dateTo >= scoreDate;
         };
         $scope.filteredScores = $scope.scores.filter(filterDateRange);
-        $scope.activeTab = RANGE;
+        $scope.activeTimeTab = RANGE;
       };
 
       var modalInstance = $modal.open({
@@ -67,7 +71,7 @@ angular.module('leadScoreClientApp')
             && scoreDate.getDate() == now.getDate();
       };
       $scope.filteredScores = $scope.scores.filter(today);
-      $scope.activeTab = DAY;
+      $scope.activeTimeTab = DAY;
     };
 
     $scope.showThisWeek = function() {
@@ -87,7 +91,7 @@ angular.module('leadScoreClientApp')
         return +firstDateOfWeek(scoreDate) == +firstDateOfWeek(now);
       };
       $scope.filteredScores = $scope.scores.filter(thisWeek);
-      $scope.activeTab = WEEK;
+      $scope.activeTimeTab = WEEK;
     };
 
     $scope.showThisMonth = function() {
@@ -98,16 +102,22 @@ angular.module('leadScoreClientApp')
             && scoreDate.getMonth() == now.getMonth();
       };
       $scope.filteredScores = $scope.scores.filter(thisMonth);
-      $scope.activeTab = MONTH;
+      $scope.activeTimeTab = MONTH;
     };
 
     $scope.showAll = function() {
-      $scope.activeTab = ALL;
+      $scope.activeTimeTab = ALL;
       $scope.filteredScores = $scope.scores;
     };
 
-    $scope.isActive = function(tab) {
-      if (tab == $scope.activeTab) {
+    $scope.isActiveTime = function(tab) {
+      if (tab == $scope.activeTimeTab) {
+        return 'active';
+      }
+    };
+
+    $scope.isActiveBranch = function(tab) {
+      if (tab == $scope.activeBranchTab) {
         return 'active';
       }
     };
