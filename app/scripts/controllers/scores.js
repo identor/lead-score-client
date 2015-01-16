@@ -10,7 +10,7 @@
 angular.module('leadScoreClientApp')
   .controller('ScoresCtrl', ['$scope', '$http', '$modal',
               function ($scope, $http, $modal) {
-    var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA;
+    var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA, MF, AU;
     $scope.ALL = ALL = 'all';
     $scope.DAY = DAY = 'day';
     $scope.WEEK = WEEK = 'week';
@@ -19,8 +19,11 @@ angular.module('leadScoreClientApp')
     $scope.BAGUIO = BAGUIO = 'baguio';
     $scope.BACOLOD = BACOLOD = 'bacolod';
     $scope.INDIA = INDIA = 'india';
+    $scope.MF = MF = 'Multifamily';
+    $scope.AU = AU = 'Auto';
     $scope.activeTimeTab = ALL;
     $scope.activeBranchTab = BAGUIO;
+    $scope.activeIndustryTab = MF;
     $scope.filteredScores = [];
 
     $http.get('scores.json')
@@ -112,6 +115,12 @@ angular.module('leadScoreClientApp')
 
     $scope.isActiveTime = function(tab) {
       if (tab == $scope.activeTimeTab) {
+        return 'active';
+      }
+    };
+
+    $scope.isActiveIndustry = function(tab) {
+      if (tab == $scope.activeIndustryTab) {
         return 'active';
       }
     };

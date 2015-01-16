@@ -13,6 +13,12 @@
   <dd ng-class="isActiveBranch(BACOLOD)"><a>Bacolod</a></dd>
   <dd ng-class="isActiveBranch(INDIA)"><a>India</a></dd>
 </dl>
+<dl class="sub-nav">
+  <dt>Branch:</dt>
+  <dd ng-class="isActiveIndustry(ALL)">All</dd>
+  <dd ng-class="isActiveIndustry(MF)"><a>{{ MF }}</a></dd>
+  <dd ng-class="isActiveIndustry(AU)"><a>{{ AU }}</a></dd>
+</dl>
 <div class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">
     <div class="small-4 medium-3 columns">Scorer</div>
