@@ -114,13 +114,24 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.setActiveIndustry = function(industry) {
-      $scope.filteredScores = industry == ALL || industry == BAGUIO ?
-        $scope.scores : [];
+      var filter = function(score) {
+        if (industry == ALL) {
+          return true;
+        }
+        return score.industry == industry;
+      };
+      $scope.filteredScores = $scope.scores.filter(filter);
       $scope.activeIndustryTab = industry;
     };
 
     $scope.setActiveBranch = function(branch) {
-      $scope.filteredScores = branch == ALL ? $scope.scores : [];
+      var filter = function(score) {
+        if (branch == ALL) {
+          return true;
+        }
+        return score.branch == branch;
+      };
+      $scope.filteredScores = $scope.scores.filter(filter);
       $scope.activeBranchTab = branch;
     };
 
