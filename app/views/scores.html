@@ -31,8 +31,8 @@
   <div class="row leadscore-table-row" ng-repeat="score in filteredScores | filter: query">
     <div class="small-4 medium-3 columns"><a>{{ score.scorer }}</a></div>
     <div class="show-for-medium-up medium-3 columns">{{ score.industry }}</div>
-    <div class="small-4 medium-3 columns text-right">{{ score.total_processing_time }}</div>
-    <div class="small-4 medium-3 columns text-right">{{ score.call_count }}</div>
+    <div class="small-4 medium-3 columns text-right">{{ score.total_processing_time | number }}</div>
+    <div class="small-4 medium-3 columns text-right">{{ score.call_count | number }}</div>
   </div>
 </div>
 <div class="small-12 columns">
