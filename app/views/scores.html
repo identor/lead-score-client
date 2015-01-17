@@ -24,13 +24,13 @@
 <div class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">
     <div class="small-4 medium-3 columns">Scorer</div>
-    <div class="show-for-medium-up medium-3 columns">Industry</div>
+    <div class="show-for-medium-up medium-3 columns">Date</div>
     <div class="small-4 medium-3 columns">Processing Time</div>
     <div class="small-4 medium-3 columns">Call Count</div>
   </div>
   <div class="row leadscore-table-row" ng-repeat="score in filteredScores | filter: query">
     <div class="small-4 medium-3 columns"><a>{{ score.scorer }}</a></div>
-    <div class="show-for-medium-up medium-3 columns">{{ score.industry }}</div>
+    <div class="show-for-medium-up medium-3 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
     <div class="small-4 medium-3 columns text-right">{{ score.total_processing_time | number }}</div>
     <div class="small-4 medium-3 columns text-right">{{ score.call_count | number }}</div>
   </div>
