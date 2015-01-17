@@ -2,11 +2,11 @@
 <input type="text" ng-model="query">
 <dl class="sub-nav">
   <dt>Time:</dt>
-  <dd ng-class="isActiveTime(ALL)" ng-click="showAll()"><a>{{ ALL }}</a></dd>
-  <dd ng-class="isActiveTime(DAY)" ng-click="showThisDay()"><a>{{ DAY }}</a></dd>
-  <dd ng-class="isActiveTime(WEEK)" ng-click="showThisWeek()"><a>{{ WEEK }}</a></dd>
-  <dd ng-class="isActiveTime(MONTH)" ng-click="showThisMonth()"><a>{{ MONTH }}</a></dd>
-  <dd ng-class="isActiveTime(RANGE)"><a ng-click="openDateRangeModal()">{{ RANGE }}</a></dd>
+  <dd ng-class="isActiveTime(ALL)" ng-click="setActiveTime(ALL)"><a>{{ ALL }}</a></dd>
+  <dd ng-class="isActiveTime(DAY)" ng-click="setActiveTime(DAY)"><a>{{ DAY }}</a></dd>
+  <dd ng-class="isActiveTime(WEEK)" ng-click="setActiveTime(WEEK)"><a>{{ WEEK }}</a></dd>
+  <dd ng-class="isActiveTime(MONTH)" ng-click="setActiveTime(MONTH)"><a>{{ MONTH }}</a></dd>
+  <dd ng-class="isActiveTime(RANGE)"><a ng-click="setActiveTime(RANGE)">{{ RANGE }}</a></dd>
 </dl>
 <dl class="sub-nav">
   <dt>Branch:</dt>

@@ -50,7 +50,6 @@ angular.module('leadScoreClientApp')
           return dateFrom <= scoreDate && dateTo >= scoreDate;
         };
         $scope.filteredScores = $scope.scores.filter(filterDateRange);
-        $scope.activeTimeTab = RANGE;
       };
 
       var modalInstance = $modal.open({
@@ -74,7 +73,6 @@ angular.module('leadScoreClientApp')
             && scoreDate.getDate() == now.getDate();
       };
       $scope.filteredScores = $scope.scores.filter(today);
-      $scope.activeTimeTab = DAY;
     };
 
     $scope.showThisWeek = function() {
@@ -94,7 +92,6 @@ angular.module('leadScoreClientApp')
         return +firstDateOfWeek(scoreDate) == +firstDateOfWeek(now);
       };
       $scope.filteredScores = $scope.scores.filter(thisWeek);
-      $scope.activeTimeTab = WEEK;
     };
 
     $scope.showThisMonth = function() {
@@ -105,12 +102,31 @@ angular.module('leadScoreClientApp')
             && scoreDate.getMonth() == now.getMonth();
       };
       $scope.filteredScores = $scope.scores.filter(thisMonth);
-      $scope.activeTimeTab = MONTH;
     };
 
     $scope.showAll = function() {
-      $scope.activeTimeTab = ALL;
       $scope.filteredScores = $scope.scores;
+    };
+
+    $scope.setActiveTime = function(time) {
+      switch (time) {
+      case ALL:
+        $scope.showAll();
+        break;
+      case DAY:
+        $scope.showThisDay();
+        break;
+      case WEEK:
+        $scope.showThisWeek();
+        break;
+      case MONTH:
+        $scope.showThisMonth();
+        break;
+      case RANGE:
+        $scope.openDateRangeModal();
+        break;
+      }
+      $scope.activeTimeTab = time;
     };
 
     $scope.setActiveIndustry = function(industry) {
