@@ -11,19 +11,19 @@ angular.module('leadScoreClientApp')
   .controller('ScoresCtrl', ['$scope', '$http', '$modal',
               function ($scope, $http, $modal) {
     var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA, MF, AU;
-    $scope.ALL = ALL = 'all';
-    $scope.DAY = DAY = 'day';
-    $scope.WEEK = WEEK = 'week';
-    $scope.MONTH = MONTH = 'month';
-    $scope.RANGE = RANGE = 'range';
-    $scope.BAGUIO = BAGUIO = 'baguio';
-    $scope.BACOLOD = BACOLOD = 'bacolod';
-    $scope.INDIA = INDIA = 'india';
+    $scope.ALL = ALL = 'All';
+    $scope.DAY = DAY = 'This Day';
+    $scope.WEEK = WEEK = 'This Week';
+    $scope.MONTH = MONTH = 'This Month';
+    $scope.RANGE = RANGE = 'Range';
+    $scope.BAGUIO = BAGUIO = 'Baguio';
+    $scope.BACOLOD = BACOLOD = 'Bacolod';
+    $scope.INDIA = INDIA = 'India';
     $scope.MF = MF = 'Multifamily';
     $scope.AU = AU = 'Auto';
     $scope.activeTimeTab = ALL;
-    $scope.activeBranchTab = BAGUIO;
-    $scope.activeIndustryTab = MF;
+    $scope.activeBranchTab = ALL;
+    $scope.activeIndustryTab = ALL;
     $scope.filteredScores = [];
 
     $http.get('scores.json')
@@ -111,6 +111,17 @@ angular.module('leadScoreClientApp')
     $scope.showAll = function() {
       $scope.activeTimeTab = ALL;
       $scope.filteredScores = $scope.scores;
+    };
+
+    $scope.setActiveIndustry = function(industry) {
+      $scope.filteredScores = industry == ALL || industry == BAGUIO ?
+        $scope.scores : [];
+      $scope.activeIndustryTab = industry;
+    };
+
+    $scope.setActiveBranch = function(branch) {
+      $scope.filteredScores = branch == ALL ? $scope.scores : [];
+      $scope.activeBranchTab = branch;
     };
 
     $scope.isActiveTime = function(tab) {
