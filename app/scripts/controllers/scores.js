@@ -50,6 +50,34 @@ angular.module('leadScoreClientApp')
       $scope.filteredScores = $scope.filteredScores.filter($scope.industryFilter);
     };
 
+    $scope.getTotalProcessingTime = function() {
+      var scores = $scope.filteredScores,
+          total = 0;
+      for (var i in scores) {
+        total += +scores[i].total_processing_time;
+      }
+      return total;
+    }
+
+    $scope.getTotalCallDuration = function() {
+      var scores = $scope.filteredScores,
+          total = 0;
+      for (var i in scores) {
+        total += +scores[i].total_call_duration;
+      }
+      return total;
+    };
+
+    $scope.getAverageProcessingTime = function() {
+      var total = $scope.getTotalProcessingTime();
+      return total / $scope.filteredScores.length
+    };
+
+    $scope.getAverageCallDuration = function() {
+      var total = $scope.getTotalProcessingTime();
+      return total / $scope.filteredScores.length
+    };
+
     $scope.openDateRangeModal = function() {
       var showDateRange = function(err, dateFrom, dateTo) {
         if (err) {

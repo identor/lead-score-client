@@ -35,3 +35,23 @@
     <div class="small-4 medium-3 columns text-right">{{ score.call_count }}</div>
   </div>
 </div>
+<div class="small-12 columns">
+  <div class="small-6 columns">
+    <label><strong>Totals</strong></label>
+    <div class="small-6 columns">
+      <label>Processing Time:</label><pre>{{ getTotalCallDuration() | number }}</pre>
+    </div>
+    <div class="small-6 columns end">
+      <label>Call Count:</label><pre>{{ getTotalProcessingTime() | number }}</pre>
+    </div>
+  </div>
+  <div class="small-6 columns">
+    <label><strong>Average</strong></label>
+    <div class="small-6 columns">
+      <label>Processing Time:</label><pre>{{ getAverageCallDuration() | number:2 }}</pre>
+    </div>
+    <div class="small-6 columns end">
+      <label>Call Count:</label><pre>{{ getAverageProcessingTime() | number:2 }}</pre>
+    </div>
+  </div>
+</div>
