@@ -10,8 +10,11 @@
 angular.module('leadScoreClientApp')
   .controller('ScoresCtrl', ['$scope', '$http', '$modal',
               function ($scope, $http, $modal) {
-    var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA, MF, AU;
+    var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA, MF, AU, DEFAULT;
     $scope.ALL = ALL = 'All';
+    $scope.DEFAULT = DEFAULT = function(element) {
+      return true;
+    };
     $scope.DAY = DAY = 'This Day';
     $scope.WEEK = WEEK = 'This Week';
     $scope.MONTH = MONTH = 'This Month';
@@ -21,6 +24,9 @@ angular.module('leadScoreClientApp')
     $scope.INDIA = INDIA = 'India';
     $scope.MF = MF = 'Multifamily';
     $scope.AU = AU = 'Auto';
+    $scope.timeFilter = DEFAULT;
+    $scope.branchFilter = DEFAULT;
+    $scope.industryFilter = DEFAULT;
     $scope.activeTimeTab = ALL;
     $scope.activeBranchTab = ALL;
     $scope.activeIndustryTab = ALL;
@@ -34,6 +40,15 @@ angular.module('leadScoreClientApp')
       .error(function(data, status, headers, config) {
         console.log('Error');
       });
+
+    /**
+     * Filter the scores accordingly.
+     */
+    $scope.applyFilters = function() {
+      $scope.filteredScores = $scope.scores.filter($scope.timeFilter);
+      $scope.filteredScores = $scope.filteredScores.filter($scope.branchFilter);
+      $scope.filteredScores = $scope.filteredScores.filter($scope.industryFilter);
+    };
 
     $scope.openDateRangeModal = function() {
       var showDateRange = function(err, dateFrom, dateTo) {
@@ -49,7 +64,8 @@ angular.module('leadScoreClientApp')
           var scoreDate = window.lastDate = new Date(score.date);
           return dateFrom <= scoreDate && dateTo >= scoreDate;
         };
-        $scope.filteredScores = $scope.scores.filter(filterDateRange);
+        $scope.timeFilter = filterDateRange;
+        $scope.applyFilters();
       };
 
       var modalInstance = $modal.open({
@@ -72,7 +88,7 @@ angular.module('leadScoreClientApp')
             && scoreDate.getMonth() == now.getMonth()
             && scoreDate.getDate() == now.getDate();
       };
-      $scope.filteredScores = $scope.scores.filter(today);
+      $scope.timeFilter = today;
     };
 
     $scope.showThisWeek = function() {
@@ -91,7 +107,7 @@ angular.module('leadScoreClientApp')
         var scoreDate = new Date(score.date)
         return +firstDateOfWeek(scoreDate) == +firstDateOfWeek(now);
       };
-      $scope.filteredScores = $scope.scores.filter(thisWeek);
+      $scope.timeFilter = thisWeek;
     };
 
     $scope.showThisMonth = function() {
@@ -101,11 +117,11 @@ angular.module('leadScoreClientApp')
         return scoreDate.getFullYear() == now.getFullYear()
             && scoreDate.getMonth() == now.getMonth();
       };
-      $scope.filteredScores = $scope.scores.filter(thisMonth);
+      $scope.timeFilter = thisMonth;
     };
 
     $scope.showAll = function() {
-      $scope.filteredScores = $scope.scores;
+      $scope.timeFilter = DEFAULT;
     };
 
     $scope.setActiveTime = function(time) {
@@ -127,6 +143,7 @@ angular.module('leadScoreClientApp')
         break;
       }
       $scope.activeTimeTab = time;
+      $scope.applyFilters();
     };
 
     $scope.setActiveIndustry = function(industry) {
@@ -136,8 +153,9 @@ angular.module('leadScoreClientApp')
         }
         return score.industry == industry;
       };
-      $scope.filteredScores = $scope.scores.filter(filter);
+      $scope.industryFilter = filter;
       $scope.activeIndustryTab = industry;
+      $scope.applyFilters();
     };
 
     $scope.setActiveBranch = function(branch) {
@@ -147,8 +165,9 @@ angular.module('leadScoreClientApp')
         }
         return score.branch == branch;
       };
-      $scope.filteredScores = $scope.scores.filter(filter);
+      $scope.branchFilter = filter;
       $scope.activeBranchTab = branch;
+      $scope.applyFilters();
     };
 
     $scope.isActiveTime = function(tab) {
