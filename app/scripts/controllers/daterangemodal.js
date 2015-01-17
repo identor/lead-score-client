@@ -15,7 +15,7 @@ angular.module('leadScoreClientApp')
     };
     $scope.items = [1, 2, 3];
     $scope.ok = function() {
-      dateRangeSelected(null, new Date($scope.date.to), new Date($scope.date.from));
+      dateRangeSelected(null, new Date($scope.date.from), new Date($scope.date.to));
       $modalInstance.close();
     };
     $scope.cancel = function() {
