@@ -9,13 +9,19 @@
  */
 angular.module('leadScoreClientApp')
   .controller('DateRangeModalCtrl', function ($scope, $modalInstance, dateRangeSelected) {
+    /**
+     * parse a date from a dd/mm/yyyy format
+     */
+    var parseDate = function(text) {
+      return new Date(text);
+    };
     $scope.date = {
-      from: '2014-12-19T23:28:56.782Z',
-      to: '2014-12-19T23:28:56.782Z'
+      from: '',
+      to: ''
     };
     $scope.items = [1, 2, 3];
     $scope.ok = function() {
-      dateRangeSelected(null, new Date($scope.date.from), new Date($scope.date.to));
+      dateRangeSelected(null, parseDate($scope.date.from), parseDate($scope.date.to));
       $modalInstance.close();
     };
     $scope.cancel = function() {
