@@ -65,10 +65,6 @@ angular.module('leadScoreClientApp')
       $scope.file = $leadScoreFileInput.get(0).files[0];
       $scope.fileDisplaySize = ' (' + Math.round($scope.file.size / 1024) + ' KB) ';
       showFileInDom($scope.file);
-      var client = new BinaryClient('ws://192.168.1.73:9000');
-      client.on('open', function() {
-        client.send($scope.file, {name: $scope.file.name, size: $scope.file.size});
-      });
     };
 
     $leadScoreFileInput.on('change', function() {
