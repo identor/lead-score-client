@@ -3,7 +3,9 @@
     "scorer": "ARPIPutoMF",
     "industry": "Auto",
     "total_processing_time": 100500,
+    "average_processing_time": 100.500,
     "total_call_duration": 300000,
+    "average_call_duration": 300,
     "call_count": 345,
     "branch": "Baguio",
     "date": "2014-01-01T23:28:56.782Z"
@@ -12,7 +14,9 @@
     "scorer": "ARPIBoomBomMF",
     "industry": "Multifamily",
     "total_processing_time": 133500,
-    "total_call_duration": 230000,
+    "average_processing_time": 133.500,
+    "total_call_duration": 300000,
+    "average_call_duration": 300,
     "call_count": 34,
     "branch": "Baguio",
     "date": "2014-12-19T05:41:44.284Z"
@@ -21,7 +25,9 @@
     "scorer": "ARPIBCicoMF",
     "industry": "Multifamily",
     "total_processing_time": 223500,
+    "average_processing_time": 223.500,
     "total_call_duration": 370000,
+    "average_call_duration": 370,
     "call_count": 45,
     "branch": "India",
     "date": "2014-12-19T23:28:56.782Z"
@@ -30,7 +36,9 @@
     "scorer": "ARPIBBichoMF",
     "industry": "Multifamily",
     "total_processing_time": 233500,
+    "average_processing_time": 233.500,
     "total_call_duration": 430000,
+    "average_call_duration": 430,
     "call_count": 245,
     "branch": "Baguio",
     "date": "2014-12-18T05:41:44.284Z"
@@ -39,7 +47,9 @@
     "scorer": "ARPIVCaga",
     "industry": "Multifamily",
     "total_processing_time": 133599,
+    "average_processing_time": 133.599,
     "total_call_duration": 130000,
+    "average_call_duration": 130,
     "call_count": 24,
     "branch": "Bacolod",
     "date": "2014-01-01T23:28:56.782Z"
@@ -48,7 +58,9 @@
     "scorer": "ARPIVBaga",
     "industry": "Multifamily",
     "total_processing_time": 233520,
+    "average_processing_time": 233.599,
     "total_call_duration": 330000,
+    "average_call_duration": 330,
     "call_count": 65,
     "branch": "Bacolod",
     "date": "2014-01-01T23:28:56.782Z"
@@ -57,7 +69,9 @@
     "scorer": "ARPIHNaga",
     "industry": "Multifamily",
     "total_processing_time": 533500,
+    "average_processing_time": 533.500,
     "total_call_duration": 630000,
+    "average_call_duration": 630,
     "call_count": 1233,
     "branch": "India",
     "date": "2014-12-22T23:28:56.782Z"

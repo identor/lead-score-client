@@ -23,35 +23,39 @@
 </dl>
 <div class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">
-    <div class="small-4 medium-3 columns">Scorer</div>
-    <div class="show-for-medium-up medium-3 columns">Date</div>
-    <div class="small-4 medium-3 columns">Processing Time</div>
-    <div class="small-4 medium-3 columns">Call Count</div>
+    <div class="small-4 medium-2 columns">Scorer</div>
+    <div class="small-4 medium-2 columns">Date</div>
+    <div class="show-for-medium-up small-4 medium-2 columns">Process Time</div>
+    <div class="show-for-medium-up small-4 medium-2 columns">Ave Process Time</div>
+    <div class="show-for-medium-up small-4 medium-2 columns">Total Call Duration</div>
+    <div class="small-4 medium-2 columns">Call Count</div>
   </div>
   <div class="row leadscore-table-row" ng-repeat="score in filteredScores | filter: query">
-    <div class="small-4 medium-3 columns"><a>{{ score.scorer }}</a></div>
-    <div class="show-for-medium-up medium-3 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
-    <div class="small-4 medium-3 columns text-right">{{ score.total_processing_time | number }}</div>
-    <div class="small-4 medium-3 columns text-right">{{ score.call_count | number }}</div>
+    <div class="small-4 medium-2 columns"><a>{{ score.scorer }}</a></div>
+    <div class="small-4 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.total_processing_time | number }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.average_processing_time | number }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.total_call_duration | number }}</div>
+    <div class="small-4 medium-2 columns text-right">{{ score.call_count | number }}</div>
   </div>
 </div>
 <div class="small-12 columns leadscore-summary">
   <div class="small-6 columns">
     <label><strong>Totals</strong></label>
     <div class="small-6 columns">
-      <label>Processing Time:</label><pre>{{ getTotalCallDuration() | number }}</pre>
+      <label>Processing Time:</label><pre>{{ getTotalProcessingTime() | number }}</pre>
     </div>
     <div class="small-6 columns end">
-      <label>Call Count:</label><pre>{{ getTotalProcessingTime() | number }}</pre>
+      <label>Call Count:</label><pre>{{ getTotalCallCount() | number }}</pre>
     </div>
   </div>
   <div class="small-6 columns">
     <label><strong>Average</strong></label>
     <div class="small-6 columns">
-      <label>Processing Time:</label><pre>{{ getAverageCallDuration() | number:2 }}</pre>
+      <label>Processing Time:</label><pre>{{ getAverageProcessingTime() | number:2 }}</pre>
     </div>
     <div class="small-6 columns end">
-      <label>Call Count:</label><pre>{{ getAverageProcessingTime() | number:2 }}</pre>
+      <label>Call Count:</label><pre>{{ getAverageCallCount() | number:2 }}</pre>
     </div>
   </div>
 </div>

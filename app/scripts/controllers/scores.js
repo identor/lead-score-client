@@ -68,6 +68,15 @@ angular.module('leadScoreClientApp')
       return total;
     };
 
+    $scope.getTotalCallCount = function() {
+      var scores = $scope.filteredScores,
+          total = 0;
+      for (var i in scores) {
+        total += +scores[i].call_count;
+      }
+      return total;
+    };
+
     $scope.getAverageProcessingTime = function() {
       var total = $scope.getTotalProcessingTime();
       return total / $scope.filteredScores.length
@@ -75,6 +84,11 @@ angular.module('leadScoreClientApp')
 
     $scope.getAverageCallDuration = function() {
       var total = $scope.getTotalProcessingTime();
+      return total / $scope.filteredScores.length
+    };
+
+    $scope.getAverageCallCount = function() {
+      var total = $scope.getTotalCallCount();
       return total / $scope.filteredScores.length
     };
 
