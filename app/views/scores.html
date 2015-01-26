@@ -1,5 +1,11 @@
-<label>Search:</label>
-<input type="text" ng-model="query">
+<div class="row collapse">
+  <div class="small-11 columns">
+    <input type="text" ng-model="query" placeholder="Search">
+  </div>
+  <div class="small-1 columns">
+    <span class="postfix"><i class="fa fa-search"></i></span>
+  </div>
+</div>
 <dl class="sub-nav">
   <dt>Time:</dt>
   <dd ng-class="isActiveTime(ALL)" ng-click="setActiveTime(ALL)"><a>{{ ALL }}</a></dd>
@@ -23,20 +29,20 @@
 </dl>
 <div class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">
-    <div class="small-4 medium-2 columns">Scorer</div>
-    <div class="small-4 medium-2 columns">Date</div>
+    <div class="small-6 medium-3 columns">Scorer</div>
+    <div class="small-3 medium-2 columns">Date</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Process Time</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Ave Process Time</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Total Call Duration</div>
-    <div class="small-4 medium-2 columns">Call Count</div>
+    <div class="small-3 medium-1 columns">Call Count</div>
   </div>
   <div class="row leadscore-table-row" ng-repeat="score in filteredScores | filter: query">
-    <div class="small-4 medium-2 columns"><a>{{ score.scorer }}</a></div>
-    <div class="small-4 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
+    <div class="small-6 medium-3 columns"><a>{{ score.scorer }}</a></div>
+    <div class="small-3 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.total_processing_time | number }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.average_processing_time | number }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.total_call_duration | number }}</div>
-    <div class="small-4 medium-2 columns text-right">{{ score.call_count | number }}</div>
+    <div class="small-3 medium-1 columns text-right">{{ score.call_count | number }}</div>
   </div>
 </div>
 <div class="small-12 columns leadscore-summary">
@@ -58,4 +64,7 @@
       <label>Call Count:</label><pre>{{ getAverageCallCount() | number:2 }}</pre>
     </div>
   </div>
+</div>
+<div class="small-12 columns">
+  <a class="button right" ng-csv="filteredScores" filename="Scores.csv" csv-header="getCsvHeader()">Export to CSV</a>
 </div>

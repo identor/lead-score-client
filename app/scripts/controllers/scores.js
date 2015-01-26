@@ -229,4 +229,11 @@ angular.module('leadScoreClientApp')
         return 'active';
       }
     };
+
+    $scope.getCsvHeader = function() {
+      var SAMPLE = 0;
+      var rawHeaders = Object.getOwnPropertyNames($scope.scores[SAMPLE]);
+      rawHeaders.pop();
+      return rawHeaders;
+    };
   }]);
