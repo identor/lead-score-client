@@ -93,7 +93,8 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.openDateRangeModal = function() {
-      var showDateRange = function(err, dateFrom, dateTo) {
+      var lastActiveTab = $scope.activeTimeTab;
+      var showDateRange = function(err, status, dateFrom, dateTo) {
         if (err) {
           console.error(err);
           return;
@@ -106,8 +107,13 @@ angular.module('leadScoreClientApp')
           var scoreDate = window.lastDate = new Date(score.date);
           return dateFrom <= scoreDate && dateTo >= scoreDate;
         };
-        $scope.timeFilter = filterDateRange;
-        $scope.applyFilters();
+        if (status == 'ok') {
+          $scope.timeFilter = filterDateRange;
+          $scope.activeTimeTab =  RANGE;
+          $scope.applyFilters();
+        } else {
+          $scope.activeTimeTab =  lastActiveTab;
+        }
       };
 
       var modalInstance = $modal.open({

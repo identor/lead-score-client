@@ -21,10 +21,13 @@ angular.module('leadScoreClientApp')
     };
     $scope.items = [1, 2, 3];
     $scope.ok = function() {
-      dateRangeSelected(null, parseDate($scope.date.from), parseDate($scope.date.to));
+      var status = 'ok';
+      dateRangeSelected(null, status, parseDate($scope.date.from), parseDate($scope.date.to));
       $modalInstance.close();
     };
     $scope.cancel = function() {
+      var status = 'cancel';
+      dateRangeSelected(null, status);
       $modalInstance.dismiss('cancel');
     };
   });
