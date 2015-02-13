@@ -6,7 +6,7 @@
     <span class="postfix"><i class="fa fa-search"></i></span>
   </div>
 </div>
-<dl class="sub-nav">
+<dl class="sub-nav row">
   <dt>Time:</dt>
   <dd ng-class="isActiveTime(ALL)" ng-click="setActiveTime(ALL)"><a>{{ ALL }}</a></dd>
   <dd ng-class="isActiveTime(DAY)" ng-click="setActiveTime(DAY)"><a>{{ DAY }}</a></dd>
@@ -14,14 +14,14 @@
   <dd ng-class="isActiveTime(MONTH)" ng-click="setActiveTime(MONTH)"><a>{{ MONTH }}</a></dd>
   <dd ng-class="isActiveTime(RANGE)"><a ng-click="setActiveTime(RANGE)">{{ RANGE }}</a></dd>
 </dl>
-<dl class="sub-nav">
+<dl class="sub-nav row">
   <dt>Branch:</dt>
   <dd ng-class="isActiveBranch(ALL)"><a ng-click="setActiveBranch(ALL)">{{ ALL }}</a></dd>
   <dd ng-class="isActiveBranch(BAGUIO)"><a ng-click="setActiveBranch(BAGUIO)">{{ BAGUIO }}</a></dd>
   <dd ng-class="isActiveBranch(BACOLOD)"><a ng-click="setActiveBranch(BACOLOD)">{{ BACOLOD }}</a></dd>
   <dd ng-class="isActiveBranch(INDIA)"><a ng-click="setActiveBranch(INDIA)">{{ INDIA }}</a></dd>
 </dl>
-<dl class="sub-nav">
+<dl class="sub-nav row">
   <dt>Industry:</dt>
   <dd ng-class="isActiveIndustry(ALL)"><a ng-click="setActiveIndustry(ALL)">{{ ALL }}</a></dd>
   <dd ng-class="isActiveIndustry(MF)"><a ng-click="setActiveIndustry(MF)">{{ MF }}</a></dd>
