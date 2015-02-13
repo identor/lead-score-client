@@ -27,7 +27,7 @@
   <dd ng-class="isActiveIndustry(MF)"><a ng-click="setActiveIndustry(MF)">{{ MF }}</a></dd>
   <dd ng-class="isActiveIndustry(AU)"><a ng-click="setActiveIndustry(AU)">{{ AU }}</a></dd>
 </dl>
-<div class="leadscore-table small-12 columns">
+<div ng-hide="loading" class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">
     <div class="small-6 medium-3 columns">Scorer</div>
     <div class="small-3 medium-2 columns">Date</div>
@@ -45,7 +45,10 @@
     <div class="small-3 medium-1 columns text-right">{{ score.call_count | number }}</div>
   </div>
 </div>
-<div class="small-12 columns leadscore-summary">
+<div ng-show="loading" class="leadscore-table small-12 columns">
+  <i class="fa fa-spinner fa-spin fa-5x"></i>
+</div>
+<div ng-hide="loading" class="small-12 columns leadscore-summary">
   <div class="small-6 columns">
     <label><strong>Totals</strong></label>
     <div class="small-6 columns">

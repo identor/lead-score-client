@@ -19,21 +19,13 @@ angular.module('leadScoreClientApp')
     };
     $scope.navs = [
       {
-        'name': 'Home',
-        'href': '#/',
-      },
-      {
         'name': 'Upload',
         'href': '#/upload',
       },
       {
         'name': 'Scores',
         'href': '#/scores',
-      },
-      {
-        'name': 'About',
-        'href': '#/about',
-      },
+      }
     ];
     $scope.changeActive = function(name) {
       $scope.activeName = name;

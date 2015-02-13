@@ -11,6 +11,7 @@ angular.module('leadScoreClientApp')
   .controller('ScoresCtrl', ['$scope', '$http', '$modal',
               function ($scope, $http, $modal) {
     var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA, MF, AU, DEFAULT;
+    $scope.loading = true;
     $scope.ALL = ALL = 'All';
     $scope.DEFAULT = DEFAULT = function(element) {
       return true;
@@ -36,6 +37,7 @@ angular.module('leadScoreClientApp')
       .success(function(data, status, headers, config) {
         $scope.scores = $scope.filteredScores = data;
         console.log(data);
+        $scope.loading = false;
       })
       .error(function(data, status, headers, config) {
         console.log('Error');
