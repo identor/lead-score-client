@@ -10,7 +10,7 @@
 angular.module('leadScoreClientApp')
   .controller('ScoresCtrl', ['$scope', '$http', '$modal',
               function ($scope, $http, $modal) {
-    var ALL, DAY, WEEK, MONTH, RANGE, BAGUIO, BACOLOD, INDIA, MF, AU, DEFAULT;
+    var ALL, DAY, WEEK, MONTH, RANGE, MF, AU, DEFAULT;
     $scope.loading = true;
     $scope.ALL = ALL = 'All';
     $scope.DEFAULT = DEFAULT = function(element) {
@@ -20,9 +20,6 @@ angular.module('leadScoreClientApp')
     $scope.WEEK = WEEK = 'This Week';
     $scope.MONTH = MONTH = 'This Month';
     $scope.RANGE = RANGE = 'Range';
-    $scope.BAGUIO = BAGUIO = 'Baguio';
-    $scope.BACOLOD = BACOLOD = 'Bacolod';
-    $scope.INDIA = INDIA = 'India';
     $scope.MF = MF = 'Multifamily';
     $scope.AU = AU = 'Auto';
     $scope.timeFilter = DEFAULT;
@@ -32,6 +29,24 @@ angular.module('leadScoreClientApp')
     $scope.activeBranchTab = ALL;
     $scope.activeIndustryTab = ALL;
     $scope.filteredScores = [];
+    $scope.branchFilters = [];
+    $scope.industriesFilters = [];
+
+    $http.get('/api/leadscore/industries')
+      .success(function (data) {
+        $scope.industriesFilters = data;
+      })
+      .error(function (data) {
+        console.log(data);
+      });
+
+    $http.get('/api/leadscore/branches')
+      .success(function (data) {
+        $scope.branchFilters = data;
+      })
+      .error(function (data) {
+        console.log(data);
+      });
 
     $http.get('/api/leadscore')
       .success(function(data, status, headers, config) {

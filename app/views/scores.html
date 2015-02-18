@@ -17,15 +17,16 @@
 <dl class="sub-nav row">
   <dt>Branch:</dt>
   <dd ng-class="isActiveBranch(ALL)"><a ng-click="setActiveBranch(ALL)">{{ ALL }}</a></dd>
-  <dd ng-class="isActiveBranch(BAGUIO)"><a ng-click="setActiveBranch(BAGUIO)">{{ BAGUIO }}</a></dd>
-  <dd ng-class="isActiveBranch(BACOLOD)"><a ng-click="setActiveBranch(BACOLOD)">{{ BACOLOD }}</a></dd>
-  <dd ng-class="isActiveBranch(INDIA)"><a ng-click="setActiveBranch(INDIA)">{{ INDIA }}</a></dd>
+  <dd ng-repeat="filter in branchFilters" ng-class="isActiveBranch(filter)">
+    <a ng-click="setActiveBranch(filter)">{{ filter }}</a>
+  </dd>
 </dl>
 <dl class="sub-nav row">
   <dt>Industry:</dt>
   <dd ng-class="isActiveIndustry(ALL)"><a ng-click="setActiveIndustry(ALL)">{{ ALL }}</a></dd>
-  <dd ng-class="isActiveIndustry(MF)"><a ng-click="setActiveIndustry(MF)">{{ MF }}</a></dd>
-  <dd ng-class="isActiveIndustry(AU)"><a ng-click="setActiveIndustry(AU)">{{ AU }}</a></dd>
+  <dd ng-repeat="filter in industriesFilters" ng-class="isActiveIndustry(filter)">
+    <a ng-click="setActiveIndustry(filter)">{{ filter }}</a>
+  </dd>
 </dl>
 <div ng-hide="loading" class="leadscore-table small-12 columns">
   <div class="row leadscore-table-header text-center">
