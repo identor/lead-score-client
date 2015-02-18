@@ -33,7 +33,7 @@ angular.module('leadScoreClientApp')
     $scope.activeIndustryTab = ALL;
     $scope.filteredScores = [];
 
-    $http.get('scores.json')
+    $http.get('/api/leadscore')
       .success(function(data, status, headers, config) {
         $scope.scores = $scope.filteredScores = data;
         console.log(data);
@@ -56,7 +56,7 @@ angular.module('leadScoreClientApp')
       var scores = $scope.filteredScores,
           total = 0;
       for (var i in scores) {
-        total += +scores[i].total_processing_time;
+        total += +scores[i].totalProcessingTime;
       }
       return total;
     }
@@ -65,7 +65,7 @@ angular.module('leadScoreClientApp')
       var scores = $scope.filteredScores,
           total = 0;
       for (var i in scores) {
-        total += +scores[i].total_call_duration;
+        total += +scores[i].totalCallDuration;
       }
       return total;
     };
@@ -74,7 +74,7 @@ angular.module('leadScoreClientApp')
       var scores = $scope.filteredScores,
           total = 0;
       for (var i in scores) {
-        total += +scores[i].call_count;
+        total += +scores[i].callCount;
       }
       return total;
     };
@@ -106,7 +106,7 @@ angular.module('leadScoreClientApp')
           return;
         }
         var filterDateRange = function(score) {
-          var scoreDate = window.lastDate = new Date(score.date);
+          var scoreDate = new Date(score.date);
           return dateFrom <= scoreDate && dateTo >= scoreDate;
         };
         if (status == 'ok') {

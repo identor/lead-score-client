@@ -39,10 +39,10 @@
   <div class="row leadscore-table-row" ng-repeat="score in filteredScores | filter: query">
     <div class="small-6 medium-3 columns"><a>{{ score.scorer }}</a></div>
     <div class="small-3 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
-    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.total_processing_time | number }}</div>
-    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.average_processing_time | number }}</div>
-    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.total_call_duration | number }}</div>
-    <div class="small-3 medium-1 columns text-right">{{ score.call_count | number }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.totalProcessingTime | number }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.averageProcessingTime | number }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.totalCallDuration | number }}</div>
+    <div class="small-3 medium-1 columns text-right">{{ score.callCount | number }}</div>
   </div>
 </div>
 <div ng-show="loading" class="leadscore-table small-12 columns">

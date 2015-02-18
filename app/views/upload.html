@@ -10,11 +10,11 @@
         </div>
       </div>
     </div>
-  <form>
+  <form action="/api/file/upload" enctype="multipart/form-data" method="post">
     <label class="button" id="leadscore-file-input-label" for="leadscore-file-input">
       Select file...
     </label>
-    <button id="leadscore-upload-button">Upload</button>
-    <input type="file" id="leadscore-file-input" />
+    <input type="file" name="csv" id="leadscore-file-input" />
+    <button type="submit" id="leadscore-upload-button">Upload</button>
   </form>
 </div>

@@ -10,7 +10,7 @@
 angular.module('leadScoreClientApp')
   .controller('DateRangeModalCtrl', function ($scope, $modalInstance, dateRangeSelected) {
     /**
-     * parse a date from a dd/mm/yyyy format
+     * parse a date from a yyyy-mm-dd format
      */
     var parseDate = function(text) {
       return new Date(text);
