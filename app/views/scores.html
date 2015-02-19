@@ -37,7 +37,7 @@
     <div class="show-for-medium-up small-4 medium-2 columns">Total Call Duration</div>
     <div class="small-3 medium-1 columns">Call Count</div>
   </div>
-  <div class="row leadscore-table-row" ng-repeat="score in filteredScores | filter: query">
+  <div class="row leadscore-table-row" ng-repeat="score in (searchedScores = (filteredScores | filter: query))">
     <div class="small-6 medium-3 columns"><a>{{ score.scorer }}</a></div>
     <div class="small-3 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.totalProcessingTime | number }}</div>
@@ -70,5 +70,5 @@
   </div>
 </div>
 <div class="small-12 columns">
-  <a class="button right" ng-csv="filteredScores" filename="Scores.csv" csv-header="getCsvHeader()">Export to CSV</a>
+  <a class="button right" ng-csv="getCsvData()" filename="Scores.csv" csv-header="getCsvHeader()">Export to CSV</a>
 </div>

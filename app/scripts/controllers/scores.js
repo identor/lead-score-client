@@ -29,6 +29,7 @@ angular.module('leadScoreClientApp')
     $scope.activeBranchTab = ALL;
     $scope.activeIndustryTab = ALL;
     $scope.filteredScores = [];
+    $scope.searchedScores = [];
     $scope.branchFilters = [];
     $scope.industriesFilters = [];
 
@@ -68,7 +69,7 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.getTotalProcessingTime = function() {
-      var scores = $scope.filteredScores,
+      var scores = $scope.getTableData(),
           total = 0;
       for (var i in scores) {
         total += +scores[i].totalProcessingTime;
@@ -77,7 +78,7 @@ angular.module('leadScoreClientApp')
     }
 
     $scope.getTotalCallDuration = function() {
-      var scores = $scope.filteredScores,
+      var scores = $scope.getTableData(),
           total = 0;
       for (var i in scores) {
         total += +scores[i].totalCallDuration;
@@ -86,7 +87,7 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.getTotalCallCount = function() {
-      var scores = $scope.filteredScores,
+      var scores = $scope.getTableData(),
           total = 0;
       for (var i in scores) {
         total += +scores[i].callCount;
@@ -96,17 +97,17 @@ angular.module('leadScoreClientApp')
 
     $scope.getAverageProcessingTime = function() {
       var total = $scope.getTotalProcessingTime();
-      return total / $scope.filteredScores.length
+      return total / $scope.getTableData().length
     };
 
     $scope.getAverageCallDuration = function() {
       var total = $scope.getTotalProcessingTime();
-      return total / $scope.filteredScores.length
+      return total / $scope.getTableData().length
     };
 
     $scope.getAverageCallCount = function() {
       var total = $scope.getTotalCallCount();
-      return total / $scope.filteredScores.length
+      return total / $scope.getTableData().length
     };
 
     $scope.openDateRangeModal = function() {
@@ -258,5 +259,17 @@ angular.module('leadScoreClientApp')
       var rawHeaders = Object.getOwnPropertyNames($scope.scores[SAMPLE]);
       rawHeaders.pop();
       return rawHeaders;
+    };
+
+    $scope.getCsvData = function() {
+      return getTableData();
+    };
+
+    $scope.getTableData = function() {
+      if ($scope.filteredScores.length === $scope.searchedScores.length) {
+       return $scope.filteredScores;
+      } else {
+       return $scope.searchedScores;
+      }
     };
   }]);
