@@ -32,6 +32,13 @@ angular.module('leadScoreClientApp')
     $scope.searchedScores = [];
     $scope.branchFilters = [];
     $scope.industriesFilters = [];
+    $scope.limit = 1000;
+    $scope.alerts = [
+      {
+        type: 'warning radius',
+        msg: 'Applications slows down due to the massive data source, please use `Limit`.'
+      }
+    ];
 
     $http.get('/api/leadscore/industries')
       .success(function (data) {
@@ -49,10 +56,9 @@ angular.module('leadScoreClientApp')
         console.log(data);
       });
 
-    $http.get('/api/leadscore')
+    $http.get('/api/score/productivity')
       .success(function(data, status, headers, config) {
         $scope.scores = $scope.filteredScores = data;
-        console.log(data);
         $scope.loading = false;
       })
       .error(function(data, status, headers, config) {
@@ -262,7 +268,7 @@ angular.module('leadScoreClientApp')
     };
 
     $scope.getCsvData = function() {
-      return getTableData();
+      return $scope.getTableData();
     };
 
     $scope.getTableData = function() {
@@ -271,5 +277,17 @@ angular.module('leadScoreClientApp')
       } else {
        return $scope.searchedScores;
       }
+    };
+
+    $scope.tableLimit = function() {
+      if ($scope.limit) {
+        return $scope.limit;
+      } else {
+        return $scope.scores.length;
+      }
+    };
+
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
     };
   }]);

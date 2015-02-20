@@ -1,0 +1,30 @@
+<h4 class="text-center">Database Stats</h4>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>
+<div class="row" ng-show="stats">
+  Score Count: <strong>{{ stats.scorers.length }}</strong><br>
+  Date Count: <strong>{{ stats.dates.length }}</strong><br>
+  Branches: <ul>
+    <li ng-repeat="branch in stats.branches"><strong>{{ branch }}</strong></li>
+  </ul>
+  Industries: <ul>
+    <li ng-repeat="industry in stats.industries"><strong>{{ industry }}</strong></li>
+  </ul>
+  Total call Duration: <strong>{{ stats.totalCallDuration | number }}</strong><br>
+  Total Processing Time: <strong>{{ stats.totalProcessingTime | number }}</strong><br>
+  Average Call Duration: <strong>{{ stats.averageCallDuration | number:2 }}</strong><br>
+  Average Processing Time: <strong>{{ stats.averageProcessingTime | number:2 }}</strong><br>
+  Total Calls Processed: <strong>{{ stats.callCount | number }}</strong><br>
+</div>
+<div class="row" ng-hide="stats">
+  <strong>Loading...</strong>
+</div>
+<hr>
+<div class="row">
+  <div class="small-6 columns expand">
+    <a class="small button expand" ng-click="ok()">Ok</a>
+  </div>
+  <div class="small-6 columns">
+    <a class="small button expand" ng-click="cancel()">Cancel</a>
+  </div>
+</div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

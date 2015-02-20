@@ -1,9 +1,24 @@
-<div class="row collapse">
-  <div class="small-11 columns">
-    <input type="text" ng-model="query" placeholder="Search">
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{ alert.msg }}</alert>
+<div class="row">
+  <div class="medium-9 small-8 columns">
+    <div class="row collapse">
+      <div class="medium-11 small-10 columns">
+        <input type="text" ng-model="query" placeholder="Search">
+      </div>
+      <div class="medium-1 small-2 columns">
+        <span class="postfix"><i class="fa fa-search"></i></span>
+      </div>
+    </div>
   </div>
-  <div class="small-1 columns">
-    <span class="postfix"><i class="fa fa-search"></i></span>
+  <div class="medium-3 small-4 columns">
+    <div class="row collapse">
+      <div class="large-2 medium-3 small-4 columns">
+        <span class="prefix">Limit</span>
+      </div>
+      <div class="large-10 medium-9 small-8 columns">
+        <input type="number" ng-model="limit" placeholder="All">
+      </div>
+    </div>
   </div>
 </div>
 <dl class="sub-nav row">
@@ -32,15 +47,15 @@
   <div class="row leadscore-table-header text-center">
     <div class="small-6 medium-3 columns">Scorer</div>
     <div class="small-3 medium-2 columns">Date</div>
+    <div class="show-for-medium-up small-4 medium-2 columns">Industry</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Process Time</div>
-    <div class="show-for-medium-up small-4 medium-2 columns">Ave Process Time</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Total Call Duration</div>
     <div class="small-3 medium-1 columns">Call Count</div>
   </div>
-  <div class="row leadscore-table-row" ng-repeat="score in (searchedScores = (filteredScores | filter: query))">
+  <div class="row leadscore-table-row" ng-repeat="score in (searchedScores = (filteredScores | filter: query | limitTo: tableLimit()))">
     <div class="small-6 medium-3 columns"><a>{{ score.scorer }}</a></div>
     <div class="small-3 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
-    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.totalProcessingTime | number }}</div>
+    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.industry }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.averageProcessingTime | number }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.totalCallDuration | number }}</div>
     <div class="small-3 medium-1 columns text-right">{{ score.callCount | number }}</div>
@@ -69,6 +84,11 @@
     </div>
   </div>
 </div>
-<div class="small-12 columns">
-  <a class="button right" ng-csv="getCsvData()" filename="Scores.csv" csv-header="getCsvHeader()">Export to CSV</a>
+<div class="row">
+  <div class="small-2 columns right">
+    <a class="button right expand" ng-csv="getCsvData()" filename="Scores.csv" csv-header="getCsvHeader()">Export Csv</a>
+  </div>
+  <div class="small-2 columns" ng-controller="ProductivityStatsCtrl">
+    <a class="button expand" ng-click="open()">Stats</a>
+  </div>
 </div>
