@@ -25,6 +25,10 @@ angular.module('leadScoreClientApp')
       {
         'name': 'Upload',
         'href': '#/upload',
+      },
+      {
+        'name': 'Reports',
+        'href': '#/reports',
       }
     ];
     $scope.changeActive = function(name) {

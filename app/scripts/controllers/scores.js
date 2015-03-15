@@ -8,8 +8,8 @@
  * Controller of the leadScoreClientApp
  */
 angular.module('leadScoreClientApp')
-  .controller('ScoresCtrl', ['$scope', '$http', '$modal',
-              function ($scope, $http, $modal) {
+  .controller('ScoresCtrl',
+              function ($scope, $http, $modal, ProductivityData) {
     var ALL, DAY, WEEK, MONTH, RANGE, MF, AU, DEFAULT;
     $scope.loading = true;
     $scope.ALL = ALL = 'All';
@@ -56,14 +56,13 @@ angular.module('leadScoreClientApp')
         console.log(data);
       });
 
-    $http.get('/api/score/productivity')
-      .success(function(data, status, headers, config) {
-        $scope.scores = $scope.filteredScores = data;
-        $scope.loading = false;
-      })
-      .error(function(data, status, headers, config) {
-        console.log('Error');
-      });
+    ProductivityData.promiseSuccess(function(data, status, headers, config) {
+      $scope.scores = $scope.filteredScores = data;
+      $scope.loading = false;
+    });
+    ProductivityData.promiseError(function(data, status, headers, config) {
+      console.log('Error');
+    });
 
     /**
      * Filter the scores accordingly.
@@ -290,4 +289,8 @@ angular.module('leadScoreClientApp')
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
     };
-  }]);
+
+    $scope.createDate = function(scoreDate) {
+     return new Date(scoreDate.year, scoreDate.month-1, scoreDate.day);
+    };
+  });

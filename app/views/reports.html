@@ -1,0 +1,27 @@
+<div ng-hide="loading">
+  <h4>Monthly Call Counts</h4>
+  <select ng-model="selected"
+      ng-click="renderTable(selected)"
+      ng-options="opt as opt.label for opt in options">
+  </select>
+  <hr>
+  <div class="auto-scrolls">
+    <table ng-show="selected">
+      <thead>
+        <tr>
+          <th class="text-center">+</th>
+          <th ng-repeat="date in currentDates">{{ date.day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="name in currentNames">
+          <th>{{ name }} </th>
+          <td ng-repeat="date in currentDates">{{ findCallCount(name, date.day) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div ng-show="loading" class="small-12 columns text-center">
+  <i class="fa fa-spinner fa-spin fa-5x"></i>
+</div>

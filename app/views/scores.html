@@ -47,15 +47,13 @@
   <div class="row leadscore-table-header text-center">
     <div class="small-6 medium-3 columns">Scorer</div>
     <div class="small-3 medium-2 columns">Date</div>
-    <div class="show-for-medium-up small-4 medium-2 columns">Industry</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Process Time</div>
     <div class="show-for-medium-up small-4 medium-2 columns">Total Call Duration</div>
     <div class="small-3 medium-1 columns">Call Count</div>
   </div>
   <div class="row leadscore-table-row" ng-repeat="score in (searchedScores = (filteredScores | filter: query | limitTo: tableLimit()))">
     <div class="small-6 medium-3 columns"><a>{{ score.scorer }}</a></div>
-    <div class="small-3 medium-2 columns">{{ score.date |  date:"MMM dd, yyyy" }}</div>
-    <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.industry }}</div>
+    <div class="small-3 medium-2 columns">{{ createDate(score.date) |  date:"MMM dd, yyyy" }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.averageProcessingTime | number }}</div>
     <div class="show-for-medium-up small-4 medium-2 columns text-right">{{ score.totalCallDuration | number }}</div>
     <div class="small-3 medium-1 columns text-right">{{ score.callCount | number }}</div>

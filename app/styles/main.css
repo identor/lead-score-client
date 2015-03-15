@@ -1,3 +1,7 @@
+.auto-scrolls {
+  overflow: auto;
+}
+
 .upload-box {
   background-color: #939393;
   height: 5rem;
@@ -17,9 +21,6 @@
   border: .1rem dashed;
   font-family: "Lucida Console", Monaco, monospace;
   margin-bottom: 1rem;
-}
-
-#loading {
 }
 
 .leadscore-table {
